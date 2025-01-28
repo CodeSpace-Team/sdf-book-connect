@@ -1,423 +1,60 @@
-@layer layout, menu, banner, notice, top-rated, grid, card;
-
-* {
-  box-sizing: border-box;
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
+  color: #333;
 }
 
-:root {
-  --grid-background: #f0f8ff;
-  --card-background: #ffffff;
-  --box-shadow: rgba(0, 0, 0, 0.1);
-  --border-colour: #ddd;
-  --text-colour: #333;
-  --book-title: #2c3e50;
-  --colour-blue: 0, 150, 255;
-  --colour-force-light: 255, 255, 255;
-  --colour-dark: #f0f8ff;
-  --header-bg-colour: 20, 20, 30;
-  --colour-blue-hover: #003d80;
-  --button-text-colour: #333333;
-  --background-colour: rgb(231, 229, 242);
-  --selection-colour: rgb(255, 183, 0);
-  --menu-text-colour: #fff;
-  --menu-colour: gray;
-  --sticky-text-colour: #fff;
-  --out-of-stock-colour: rgb(1, 33, 212);
-  --new-text-colour: rgb(212, 1, 22);
-  --link-hover-colour: #c0c0c0;
-  --card-text-colour: gray;
-  --card-author-colour: #8e44ad;
-  --notice-background-colour: #ca4700d6;
-  --marker-colour: #8e44ad;
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #f0f8ff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 }
 
-@media (prefers-colour-scheme: dark) {
-  :root {
-    --grid-background: #141516;
-    --card-background: #373737;
-    --box-shadow: rgba(255, 255, 255, 0.1);
-    --border-colour: #3e3e3e;
-    --text-colour: #fff;
-    --book-title: #5dadfc;
-    --colour-blue: 51, 102, 153;
-    --colour-force-light: 245, 245, 255;
-    --colour-dark: 235, 235, 245;
-    --header-bg-colour: 20, 20, 30;
-    --colour-blue-hover: 57, 115, 172;
-    --button-text-colour: #ffffff;
-    --background-colour: rgb(0, 0, 0);
-    --selection-colour: rgb(255, 0, 60);
-    --menu-text-colour: #fff;
-    --menu-colour: gray;
-    --sticky-text-colour: #fff;
-    --out-of-stock-colour: rgb(1, 33, 212);
-    --new-text-colour: rgb(212, 1, 22);
-    --link-hover-colour: #c0c0c0;
-    --card-text-colour: gray;
-    --card-author-colour: #8e44ad;
-    --notice-background-colour: #ff5900d6;
-    --marker-colour: #8e44ad;
-  }
+.book-card {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+  padding: 15px;
 }
 
-@layer layout {
-  body {
-    background: var(--background-colour);
-    color: var(--text-colour);
-    min-height: 100%;
-    min-width: 100%;
-    font-family: "Poppins", Roboto, sans-serif;
-    margin: 0;
-    padding: 0;
-
-    ::selection {
-      background-color: var(--selection-colour);
-    }
-  }
-
-  .main {
-    padding-bottom: 20px;
-    display: flex;
-    justify-content: center;
-    width: 1300px;
-    flex-direction: column;
-  }
-
-  .main__button {
-    font-family: Roboto, sans-serif;
-    transition: background-color 0.1s;
-    border-width: 0;
-    border-radius: 6px;
-    height: 50px;
-    cursor: pointer;
-    width: 50%;
-    background-color: rgba(var(--colour-blue), 1);
-    color: rgba(var(--colour-force-light), 1);
-    font-size: 15px;
-    border: 1px solid rgba(var(--colour-blue), 1);
-    max-width: 120px;
-    margin: 0 auto;
-    display: block;
-  }
-
-  .main__message {
-    display: none;
-    padding: 5px 5px 5px;
-    text-align: center;
-  }
-
-  .backdrop {
-    display: none;
-    background: rgba(var(--colour-dark), 0.3);
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 1300px;
-  }
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-@layer menu {
-  .header {
-    background-color: rgba(var(--header-bg-colour), 0.9);
-    position: sticky;
-    top: 0;
-    left: 0;
-    margin: 0;
-    color: var(--menu-text-colour);
-    z-index: 2;
-    height: 60px;
-    display: flex;
-    flex-direction: row;
-    padding: 5px;
-  }
-
-  .menu {
-    color: var(--menu-text-colour);
-    padding: 10px;
-    border-radius: 20px;
-    border-color: var(--border-colour);
-    margin: 5px;
-  }
-
-  .header__inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 0 5px;
-    margin: 0 0;
-  }
-
-  .header__logo {
-    width: 92%;
-    padding: 5px 0 5px 5px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-  }
-
-  .menu-link {
-    display: flex;
-    flex-direction: row;
-    text-decoration: none;
-    font-size: 20px;
-    font-weight: 600;
-    transition: all 1s ease-out;
-    color: var(--menu-text-colour);
-  }
-
-  .menu-link:hover {
-    color: var(--link-hover-colour);
-    font-size: 40px;
-  }
-
-  .header__shape {
-    height: 20px;
-    margin-right: 20px;
-    fill: rgb(var(--colour-force-light));
-  }
-
-  .header__text path {
-    fill: rgb(var(--colour-force-light));
-  }
-
-  .form {
-    display: flex;
-    justify-content: space-between; /* Distributes the items with space between them */
-    width: 100%;
-  }
-
-  .header__text {
-    height: 20px;
-    fill: rgba(var(--colour-force-light), 1);
-  }
-
-  .menu-item {
-    width: 180px;
-    padding: 10px 10px;
-    margin: 15px 0px;
-    font-weight: 600;
-    font-family: "Poppins";
-    border-radius: 5px;
-  }
+.book-card img {
+  width: 100%;
+  height: 300px; /* Set a fixed height */
+  object-fit: cover; /* Ensures the image fits the container while preserving aspect ratio */
+  border-bottom: 1px solid #ddd; /* Optional: To separate the image from the rest of the card */
 }
 
-@layer banner {
-  .image {
-    object-fit: cover;
-    width: 1300px;
-    clip-path: inset(0 0 0 0);
-    transition: clip-path 1s ease;
-    height: 400px;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background: url("https://wallpapers.com/images/featured/book-background-1uu89e2eikq8h8ip.jpg")
-      no-repeat center;
-    z-index: 1;
-  }
-
-  .image:hover {
-    clip-path: inset(0 0 100% 0);
-  }
-
-  .image2 {
-    object-fit: cover;
-    height: 400px;
-    width: 1300px;
-    background: url("https://images.wallpaperscraft.com/image/single/books_library_shelves_138556_2560x1080.jpg")
-      no-repeat center;
-    z-index: 1;
-  }
+.book-card .book-title {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  color: #2c3e50;
 }
 
-@layer notice {
-  .notice {
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    width: 200px;
-    background-color: var(--notice-background-colour);
-    color: var(--menu-text-colour);
-    position: fixed;
-    top: 480px;
-    left: 20px;
-    height: 100px;
-    z-index: 5;
-    border-radius: 15px;
-    animation: notice-animation 4s;
-    animation-iteration-count: 1;
-  }
-
-  @keyframes notice-animation {
-    from {
-      transform: rotate(0deg);
-    }
-
-    25% {
-      transform: rotate(-45deg);
-      height: 200px;
-      width: 300px;
-      font-size: 30px;
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
-  }
+.book-card .book-author {
+  font-size: 1rem;
+  color: #8e44ad;
+  margin: 5px 0;
 }
 
-@layer top-rated {
-  .top-rated {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    width: 1300px;
-    padding-bottom: 20px;
-  }
-
-  .top-rated ul {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-left: 70px;
-    padding-right: 100px;
-    text-align: left;
-    margin: auto;
-  }
-
-  .top-rated ul li {
-    padding-bottom: 3px;
-  }
-
-  .top-rated ul li::marker {
-    /* color: var(--marker-colour); */
-    content: "📚";
-  }
-}
-
-@layer grid {
-  .list__items {
-    display: grid;
-    padding: 5px 5px;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 20px;
-    margin: 0 auto;
-    width: 100%;
-  }
-
-  .list__items:nth-child(2n) {
-    background-color: var(--grid-background);
-  }
-}
-
-@layer card {
-  .card {
-    display: flex;
-    flex-direction: column;
-    background: var(--card-background);
-    border: 1px solid var(--border-colour);
-    border-radius: 8px;
-    overflow: hidden;
-    text-align: center;
-    box-shadow: 0 2px 4px var(--box-shadow);
-    transition: transform 0.2s, box-shadow 0.2s;
-    padding: 15px;
-  }
-
-  .card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px var(--box-shadow);
-  }
-
-  .card img {
-    width: 100%;
-    height: 300px; /* Set a fixed height */
-    object-fit: cover; /* Ensures the image fits the container while preserving aspect ratio */
-    border-bottom: 1px solid var(--border-colour); /* Optional: To separate the image from the rest of the card */
-    max-width: 100%;
-    width: 100%;
-    max-height: 220px;
-    border-radius: 10px 10px 7px 7px;
-    flex-shrink: 0;
-    margin-top: 2px;
-  }
-
-  .card .button {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: rgb(var(--colour-blue));
-    color: var(--button-text-colour);
-    border: 1px solid rgba(var(--colour-blue), 1);
-    border-radius: 5px;
-    cursor: pointer;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 10px;
-    margin-top: auto;
-  }
-
-  .card .button:hover {
-    background-color: var(--colour-blue-hover);
-    color: rgba(var(--colour-blue), 1);
-  }
-
-  .card .title {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 10px 0;
-    white-space: wrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    margin: 10px 0;
-    color: var(--book-title);
-  }
-
-  .card .author {
-    color: var(--card-text-colour);
-    font-size: 10px;
-    margin-bottom: 15px;
-    text-overflow: ellipsis;
-    color: var(--card-author-colour);
-  }
-
-  .card .book-info {
-    font-size: 12px;
-    color: var(--card-text-colour);
-    margin: 5px 0;
-  }
-
-  .image-container {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-
-  .new {
-    background-color: var(--new-text-clour);
-    color: var(--sticky-text-colour);
-    padding: 5px;
-    width: 100px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    position: absolute;
-    z-index: 1;
-    top: 30px;
-    left: 0;
-  }
-
-  .out-of-stock {
-    background-color: var(--out-of-stock-colour);
-    color: var(--sticky-text-colour);
-    padding: 5px;
-    width: 100px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    z-index: 1;
-  }
+.book-card .book-info {
+  font-size: 0.9rem;
+  color: #7f8c8d;
+  margin: 5px 0;
 }
