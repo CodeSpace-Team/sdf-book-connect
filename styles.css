@@ -1,4 +1,4 @@
-@layer layout, navigation, banner, notice, top-rated, grid, card;
+@layer layout, menu, banner, notice, top-rated, grid, card;
 
 * {
   box-sizing: border-box;
@@ -8,38 +8,62 @@
   --grid-background: #f0f8ff;
   --card-background: #ffffff;
   --box-shadow: rgba(0, 0, 0, 0.1);
-  --border-color: #ddd;
-  --text-color: #333;
+  --border-colour: #ddd;
+  --text-colour: #333;
   --book-title: #2c3e50;
-  --color-blue: 0, 150, 255;
-  --color-force-light: 255, 255, 255;
-  --color-dark: #f0f8ff;
-  --header-bg-color: 20, 20, 30;
-  --color-blue-hover: #003d80;
-  --button-text-color: #333333;
+  --colour-blue: 0, 150, 255;
+  --colour-force-light: 255, 255, 255;
+  --colour-dark: #f0f8ff;
+  --header-bg-colour: 20, 20, 30;
+  --colour-blue-hover: #003d80;
+  --button-text-colour: #333333;
+  --background-colour: rgb(231, 229, 242);
+  --selection-colour: rgb(255, 183, 0);
+  --menu-text-colour: #fff;
+  --menu-colour: gray;
+  --sticky-text-colour: #fff;
+  --out-of-stock-colour: rgb(1, 33, 212);
+  --new-text-colour: rgb(212, 1, 22);
+  --link-hover-colour: #c0c0c0;
+  --card-text-colour: gray;
+  --card-author-colour: #8e44ad;
+  --notice-background-colour: #ca4700d6;
+  --marker-colour: #8e44ad;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-colour-scheme: dark) {
   :root {
     --grid-background: #141516;
     --card-background: #373737;
     --box-shadow: rgba(255, 255, 255, 0.1);
-    --border-color: #3e3e3e;
-    --text-color: #fff;
+    --border-colour: #3e3e3e;
+    --text-colour: #fff;
     --book-title: #5dadfc;
-    --color-dark: 235, 235, 245;
-    --color-force-light: 245, 245, 255;
-    --color-blue: 51, 102, 153;
-    --color-blue-hover: 57, 115, 172;
-    --button-text-color: #ffffff;
-    --header-bg-color: 20, 20, 30;
+    --colour-blue: 51, 102, 153;
+    --colour-force-light: 245, 245, 255;
+    --colour-dark: 235, 235, 245;
+    --header-bg-colour: 20, 20, 30;
+    --colour-blue-hover: 57, 115, 172;
+    --button-text-colour: #ffffff;
+    --background-colour: rgb(0, 0, 0);
+    --selection-colour: rgb(255, 0, 60);
+    --menu-text-colour: #fff;
+    --menu-colour: gray;
+    --sticky-text-colour: #fff;
+    --out-of-stock-colour: rgb(1, 33, 212);
+    --new-text-colour: rgb(212, 1, 22);
+    --link-hover-colour: #c0c0c0;
+    --card-text-colour: gray;
+    --card-author-colour: #8e44ad;
+    --notice-background-colour: #ff5900d6;
+    --marker-colour: #8e44ad;
   }
 }
 
 @layer layout {
   body {
-    background: rgb(231, 229, 242);
-    color: var(--text-color);
+    background: var(--background-colour);
+    color: var(--text-colour);
     min-height: 100%;
     min-width: 100%;
     font-family: "Poppins", Roboto, sans-serif;
@@ -47,7 +71,7 @@
     padding: 0;
 
     ::selection {
-      background-color: rgb(255, 183, 0);
+      background-color: var(--selection-colour);
     }
   }
 
@@ -67,10 +91,10 @@
     height: 50px;
     cursor: pointer;
     width: 50%;
-    background-color: rgba(var(--color-blue), 1);
-    color: rgba(var(--color-force-light), 1);
+    background-color: rgba(var(--colour-blue), 1);
+    color: rgba(var(--colour-force-light), 1);
     font-size: 15px;
-    border: 1px solid rgba(var(--color-blue), 1);
+    border: 1px solid rgba(var(--colour-blue), 1);
     max-width: 120px;
     margin: 0 auto;
     display: block;
@@ -84,7 +108,7 @@
 
   .backdrop {
     display: none;
-    background: rgba(var(--color-dark), 0.3);
+    background: rgba(var(--colour-dark), 0.3);
     position: fixed;
     top: 0;
     left: 0;
@@ -93,25 +117,26 @@
   }
 }
 
-@layer navigation {
+@layer menu {
   .header {
-    background-color: rgba(var(--header-bg-color), 0.9);
+    background-color: rgba(var(--header-bg-colour), 0.9);
     position: sticky;
     top: 0;
     left: 0;
     margin: 0;
-    color: #fff;
+    color: var(--menu-text-colour);
     z-index: 2;
     height: 60px;
     display: flex;
     flex-direction: row;
     padding: 5px;
   }
+
   .menu {
-    color: gray;
+    color: var(--menu-text-colour);
     padding: 10px;
     border-radius: 20px;
-    border-color: lightgray;
+    border-color: var(--border-colour);
     margin: 5px;
   }
 
@@ -139,22 +164,22 @@
     font-size: 20px;
     font-weight: 600;
     transition: all 1s ease-out;
-    color: #fff;
+    color: var(--menu-text-colour);
   }
 
   .menu-link:hover {
-    color: #c0c0c0;
+    color: var(--link-hover-colour);
     font-size: 40px;
   }
 
   .header__shape {
     height: 20px;
     margin-right: 20px;
-    fill: rgb(var(--color-force-light));
+    fill: rgb(var(--colour-force-light));
   }
 
   .header__text path {
-    fill: rgb(var(--color-force-light));
+    fill: rgb(var(--colour-force-light));
   }
 
   .form {
@@ -165,7 +190,7 @@
 
   .header__text {
     height: 20px;
-    fill: rgba(var(--color-force-light), 1);
+    fill: rgba(var(--colour-force-light), 1);
   }
 
   .menu-item {
@@ -213,8 +238,8 @@
     justify-content: center;
     padding: 15px;
     width: 200px;
-    background-color: #ca4700d6;
-    color: #fff;
+    background-color: var(--notice-background-colour);
+    color: var(--menu-text-colour);
     position: fixed;
     top: 480px;
     left: 20px;
@@ -268,7 +293,7 @@
   }
 
   .top-rated ul li::marker {
-    /* color: #8e44ad; */
+    /* color: var(--marker-colour); */
     content: "📚";
   }
 }
@@ -293,7 +318,7 @@
     display: flex;
     flex-direction: column;
     background: var(--card-background);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--border-colour);
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
@@ -311,7 +336,7 @@
     width: 100%;
     height: 300px; /* Set a fixed height */
     object-fit: cover; /* Ensures the image fits the container while preserving aspect ratio */
-    border-bottom: 1px solid var(--border-color); /* Optional: To separate the image from the rest of the card */
+    border-bottom: 1px solid var(--border-colour); /* Optional: To separate the image from the rest of the card */
     max-width: 100%;
     width: 100%;
     max-height: 220px;
@@ -323,9 +348,9 @@
   .card .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: rgb(var(--color-blue));
-    color: var(--button-text-color);
-    border: 1px solid rgba(var(--color-blue), 1);
+    background-color: rgb(var(--colour-blue));
+    color: var(--button-text-colour);
+    border: 1px solid rgba(var(--colour-blue), 1);
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
@@ -335,8 +360,8 @@
   }
 
   .card .button:hover {
-    background-color: var(--color-blue-hover);
-    color: rgba(var(--color-blue), 1);
+    background-color: var(--colour-blue-hover);
+    color: rgba(var(--colour-blue), 1);
   }
 
   .card .title {
@@ -351,22 +376,28 @@
   }
 
   .card .author {
-    color: gray;
+    color: var(--card-text-colour);
     font-size: 10px;
     margin-bottom: 15px;
     text-overflow: ellipsis;
-    color: #8e44ad;
+    color: var(--card-author-colour);
   }
 
   .card .book-info {
     font-size: 12px;
-    color: #7f8c8d;
+    color: var(--card-text-colour);
     margin: 5px 0;
   }
 
+  .image-container {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+
   .new {
-    background-color: rgb(212, 1, 22);
-    color: #fff;
+    background-color: var(--new-text-clour);
+    color: var(--sticky-text-colour);
     padding: 5px;
     width: 100px;
     border-top-right-radius: 5px;
@@ -377,15 +408,9 @@
     left: 0;
   }
 
-  .image-container {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-
   .out-of-stock {
-    background-color: rgb(1, 33, 212);
-    color: #fff;
+    background-color: var(--out-of-stock-colour);
+    color: var(--sticky-text-colour);
     padding: 5px;
     width: 100px;
     border-top-right-radius: 5px;
