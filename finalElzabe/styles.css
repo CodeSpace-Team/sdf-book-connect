@@ -5,8 +5,8 @@
 }
 
 :root {
-  --grid-background: #f0f8ff;
   --card-background: #ffffff;
+  --card-background-two: #e6cbff;
   --box-shadow: rgba(0, 0, 0, 0.1);
   --border-colour: #ddd;
   --text-colour: #333;
@@ -31,10 +31,10 @@
   --marker-colour: #8e44ad;
 }
 
-@media (prefers-colour-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --grid-background: #141516;
     --card-background: #373737;
+    --card-background-two: #340065;
     --box-shadow: rgba(255, 255, 255, 0.1);
     --border-colour: #3e3e3e;
     --text-colour: #fff;
@@ -307,10 +307,6 @@
     margin: 0 auto;
     width: 100%;
   }
-
-  .list__items:nth-child(2n) {
-    background-color: var(--grid-background);
-  }
 }
 
 @layer card {
@@ -396,7 +392,7 @@
   }
 
   .new {
-    background-color: var(--new-text-clour);
+    background-color: var(--new-text-colour);
     color: var(--sticky-text-colour);
     padding: 5px;
     width: 100px;
@@ -419,5 +415,9 @@
     top: 30px;
     left: 0;
     z-index: 1;
+  }
+
+  .list__items > :nth-child(2n) {
+    background: var(--card-background-two);
   }
 }
