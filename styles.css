@@ -18,7 +18,7 @@
     padding-bottom: 20px;
     display: flex;
     justify-content: center;
-    width: 1200px;
+    width: 1900px;
     flex-direction: column;
   }
 
@@ -52,7 +52,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 1200px;
+    width: 1900px;
   }
 
 /* navigation */
