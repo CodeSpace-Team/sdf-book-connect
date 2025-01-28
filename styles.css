@@ -55,7 +55,7 @@
     padding-bottom: 20px;
     display: flex;
     justify-content: center;
-    width: 1200px;
+    width: 1300px;
     flex-direction: column;
   }
 
@@ -89,7 +89,7 @@
     top: 0;
     left: 0;
     height: 100%;
-    width: 1200px;
+    width: 1300px;
   }
 }
 
@@ -181,7 +181,7 @@
 @layer banner {
   .image {
     object-fit: cover;
-    width: 1900px;
+    width: 1300px;
     clip-path: inset(0 0 0 0);
     transition: clip-path 1s ease;
     height: 400px;
@@ -200,7 +200,7 @@
   .image2 {
     object-fit: cover;
     height: 400px;
-    width: 1900px;
+    width: 1300px;
     background: url("https://images.wallpaperscraft.com/image/single/books_library_shelves_138556_2560x1080.jpg")
       no-repeat center;
     z-index: 1;
@@ -249,7 +249,7 @@
     justify-content: center;
     flex-direction: column;
     text-align: center;
-    width: 1200px;
+    width: 1300px;
     padding-bottom: 20px;
   }
 
