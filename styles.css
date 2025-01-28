@@ -1,63 +1,17 @@
-@layer layout, navigation, banner, notice, top-rated, grid, card;
-
 * {
   box-sizing: border-box;
 }
 
-:root {
-  --grid-background: #f0f8ff;
-  --card-background: #ffffff;
-  --box-shadow: rgba(0, 0, 0, 0.1);
-  --border-color: #ddd;
-  --text-color: #333;
-  --book-title: #2c3e50;
-  --color-blue: 0, 150, 255;
-  --color-force-dark: 10, 10, 20;
-  --color-force-light: 255, 255, 255;
-  --color-dark: #f0f8ff;
-  --color-light: 255, 255, 255;
-  --header-bg-color: 20, 20, 30;
-  --color-search-panel: 255, 255, 255;
-  --card-bg-color: #f4f4f4;
-  --color-blue-hover: #003d80;
-  --button-text-color: #333333;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --grid-background: #141516;
-    --card-background: #373737;
-    --box-shadow: rgba(255, 255, 255, 0.1);
-    --border-color: #3e3e3e;
-    --text-color: #fff;
-    --book-title: #5dadfc;
-    --color-dark: 235, 235, 245;
-    --color-light: 18, 18, 28;
-    --card-bg-color: #1e1e28;
-    --color-force-dark: 28, 28, 36;
-    --color-force-light: 245, 245, 255;
-    --color-blue: 51, 102, 153;
-    --color-blue-hover: 57, 115, 172;
-    --button-text-color: #ffffff;
-    --header-bg-color: 20, 20, 30;
-  }
-}
-
-@layer layout {
+/* layout */
   body {
     background: rgb(231, 229, 242);
-    color: var(--text-color);
+    color: #333;
     margin: 0;
     min-height: 100%;
     min-width: 100%;
     font-family: "Poppins", Roboto, sans-serif;
-    color: rgba(var(--color-dark), 0.9);
     margin: 0;
     padding: 0;
-
-    ::selection {
-      background-color: rgb(255, 183, 0);
-    }
   }
 
   .main {
@@ -76,10 +30,10 @@
     height: 50px;
     cursor: pointer;
     width: 50%;
-    background-color: rgba(var(--color-blue), 1);
-    color: rgba(var(--color-force-light), 1);
+    background-color: rgba(0, 150, 255, 1);
+    color: rgba(255, 255, 255, 1);
     font-size: 15px;
-    border: 1px solid rgba(var(--color-blue), 1);
+    border: 1px solid rgba(0, 150, 255, 1);
     max-width: 120px;
     margin: 0 auto;
     display: block;
@@ -93,18 +47,17 @@
 
   .backdrop {
     display: none;
-    background: rgba(var(--color-dark), 0.3);
+    background: rgba(4, 4, 20, 0.9);
     position: fixed;
     top: 0;
     left: 0;
     height: 100%;
     width: 1200px;
   }
-}
 
-@layer navigation {
+/* navigation */
   .header {
-    background-color: rgba(var(--header-bg-color), 0.9);
+    background-color: rgba(20, 20, 30, 0.9);
     position: sticky;
     top: 0;
     left: 0;
@@ -159,11 +112,11 @@
   .header__shape {
     height: 20px;
     margin-right: 20px;
-    fill: rgb(var(--color-force-light));
+    fill: rgb(255, 255, 255);
   }
 
   .header__text path {
-    fill: rgb(var(--color-force-light));
+    fill: rgb(255, 255, 255);
   }
 
   .form {
@@ -174,7 +127,7 @@
 
   .header__text {
     height: 20px;
-    fill: rgba(var(--color-force-light), 1);
+    fill: rgba(255, 255, 255, 1);
   }
 
   .menu-item {
@@ -185,103 +138,8 @@
     font-family: "Poppins";
     border-radius: 5px;
   }
-}
 
-@layer banner {
-  .image {
-    object-fit: cover;
-    width: 100%;
-    clip-path: inset(0 0 0 0);
-    transition: clip-path 1s ease;
-    height: 400px;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background: url("https://wallpapers.com/images/featured/book-background-1uu89e2eikq8h8ip.jpg")
-      no-repeat center;
-    z-index: 1;
-  }
-
-  .image:hover {
-    clip-path: inset(0 0 100% 0);
-  }
-
-  .image2 {
-    object-fit: cover;
-    height: 400px;
-    width: 100%;
-    background: url("https://images.wallpaperscraft.com/image/single/books_library_shelves_138556_2560x1080.jpg")
-      no-repeat center;
-    z-index: 1;
-  }
-}
-
-@layer notice {
-  .notice {
-    display: flex;
-    justify-content: center;
-    padding: 15px;
-    width: 200px;
-    background-color: #ca4700d6;
-    color: #fff;
-    position: fixed;
-    top: 480px;
-    left: 20px;
-    height: 100px;
-    z-index: 5;
-    border-radius: 15px;
-    animation: notice-animation 4s;
-    animation-iteration-count: 1;
-  }
-
-  @keyframes notice-animation {
-    from {
-      transform: rotate(0deg);
-    }
-
-    25% {
-      transform: rotate(-45deg);
-      height: 200px;
-      width: 300px;
-      font-size: 30px;
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
-  }
-}
-
-@layer top-rated {
-  .top-rated {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    text-align: center;
-    width: 1200px;
-  }
-
-  .top-rated ul {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding-left: 70px;
-    padding-right: 100px;
-    text-align: left;
-    margin: auto;
-  }
-
-  .top-rated ul li {
-    padding-bottom: 3px;
-  }
-
-  .top-rated ul li::marker {
-    /* color: #8e44ad; */
-    content: "📚";
-  }
-}
-
-@layer grid {
+/* grid */
   .list__items {
     display: grid;
     padding: 5px 5px;
@@ -291,36 +149,31 @@
     margin: 0 auto;
     width: 100%;
   }
-  /* Books landing page grid */
-  .book-grid > :nth-child(2n) {
-    background-color: var(--grid-background);
-  }
-}
 
-@layer card {
+/* card */
   .card {
     display: flex;
     flex-direction: column;
-    background: var(--card-background);
-    border: 1px solid var(--border-color);
+    background-color: #ffffff;
+    border: 1px solid #ddd;
     border-radius: 8px;
     overflow: hidden;
     text-align: center;
-    box-shadow: 0 2px 4px var(--box-shadow);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
     padding: 15px;
   }
 
   .card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 4px 8px var(--box-shadow);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
 
   .card img {
     width: 100%;
     height: 300px; /* Set a fixed height */
     object-fit: cover; /* Ensures the image fits the container while preserving aspect ratio */
-    border-bottom: 1px solid var(--border-color); /* Optional: To separate the image from the rest of the card */
+    border-bottom: 1px solid #ddd; /* Optional: To separate the image from the rest of the card */
     max-width: 100%;
     width: 100%;
     max-height: 220px;
@@ -332,9 +185,9 @@
   .card .button {
     display: inline-block;
     padding: 10px 20px;
-    background-color: rgb(var(--color-blue));
-    color: var(--button-text-color);
-    border: 1px solid rgba(var(--color-blue), 1);
+    background-color: rgb(0, 150, 255);
+    color: #333333;
+    border: 1px solid rgba(0, 150, 255, 1);
     border-radius: 5px;
     cursor: pointer;
     text-decoration: none;
@@ -344,8 +197,8 @@
   }
 
   .card .button:hover {
-    background-color: var(--color-blue-hover);
-    color: rgba(var(--color-blue), 1);
+    background-color: #003d80;
+    color: rgba(0, 150, 255, 1);
   }
 
   .card .title {
@@ -356,7 +209,7 @@
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 10px 0;
-    color: var(--book-title);
+    color: #2c3e50;
   }
 
   .card .author {
@@ -372,40 +225,3 @@
     color: #7f8c8d;
     margin: 5px 0;
   }
-
-  .new {
-    background-color: rgb(212, 1, 22);
-    color: #fff;
-    padding: 5px;
-    width: 100px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    position: absolute;
-    z-index: 1;
-    top: 30px;
-    left: 0;
-  }
-
-  .image-container {
-    position: relative;
-    top: 0;
-    left: 0;
-  }
-
-  .out-of-stock {
-    background-color: rgb(1, 33, 212);
-    color: #fff;
-    padding: 5px;
-    width: 100px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    z-index: 1;
-  }
-
-  .out-of-stock-image {
-    opacity: 0.3;
-  }
-}
