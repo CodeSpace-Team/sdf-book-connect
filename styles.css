@@ -421,3 +421,29 @@
     background: var(--card-background-two);
   }
 }
+
+/* Media queries */
+
+@media (max-width: 768px) {
+
+  .main {
+    width: auto;
+  }
+
+  .list__items {
+    display: flex;
+    flex-direction: column;
+
+  }
+  .card {
+      width: 90%; 
+      max-width: 400px;
+      margin: 10px auto;
+  }
+
+  .image, .image2 {
+      width: 100vw;
+      max-width: 100%;
+      height: auto;
+  }
+}
