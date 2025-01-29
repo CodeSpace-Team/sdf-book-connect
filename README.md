@@ -1,3 +1,4 @@
-# SDF Book Connect Code Along
+# SDF Book Connect Code Alnog
 
-Solution repo for Book Connect code along videos
+Welcome to the **SDF Book Connect Code Along** repository! This is the official solution repo for the Book Connect code-along video series, where we build a stylish and functional book catalog web page using **HTML & CSS**.
+
