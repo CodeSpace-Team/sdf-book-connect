@@ -135,6 +135,7 @@
   .mobile-header {
     height: 120px;
     display: block;
+    width: 100%;
   }
 
   .menu {
