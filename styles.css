@@ -133,9 +133,8 @@
   }
 
   .mobile-header {
-    height: 120px;
+    height: 130px;
     display: block;
-    width: 100%;
   }
 
   .menu {
@@ -190,7 +189,7 @@
 
   .form {
     display: flex;
-    justify-content: space-between; /* Distributes the items with space between them */
+    justify-content: space-between;
     width: 100%;
   }
 
@@ -462,8 +461,15 @@
   }
 
   .image, .image2 {
-      width: 100vw;
-      max-width: 100%;
-      height: auto;
+      width: 100%;
+      height: 50vh;
+  }
+
+  .top-rated {
+    width: auto;
+  }
+
+  .notice {
+    display: none;
   }
 }
