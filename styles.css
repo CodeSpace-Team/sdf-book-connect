@@ -132,11 +132,6 @@
     padding: 5px;
   }
 
-  .mobile-header {
-    height: 130px;
-    display: block;
-  }
-
   .menu {
     color: var(--menu-text-colour);
     padding: 10px;
@@ -440,10 +435,14 @@
     display: none;
   }
 
+  .mobile-header {
+    height: 130px;
+    display: block;
+  }
+
   .header__logo {
     margin: 15px 0px;
   }
-
 
   .main {
     width: auto;
