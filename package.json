@@ -1,0 +1,23 @@
+{
+  "name": "sdf-book-connect",
+  "version": "1.0.0",
+  "description": "Welcome to the **SDF Book Connect Code Along** repository! This is the official solution repo for the Book Connect code-along video series, where we build a stylish and functional book catalog web page using **HTML & CSS**.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeSpace-Team/sdf-book-connect.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CodeSpace-Team/sdf-book-connect/issues"
+  },
+  "homepage": "https://github.com/CodeSpace-Team/sdf-book-connect#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.0.1",
+    "tailwindcss": "^4.0.1"
+  }
+}
