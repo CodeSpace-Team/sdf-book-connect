@@ -445,7 +445,7 @@
   }
 
   .main {
-    width: auto;
+    width: 100%;
   }
 
   .list__items {
@@ -465,7 +465,7 @@
 
   .image2 {
       width: 100%;
-      height: 50vh;
+      height: 200px;
   }
 
   .top-rated {
