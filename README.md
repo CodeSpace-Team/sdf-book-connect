@@ -33,7 +33,6 @@ To get started with the project, follow these steps:
 ├── 📂 assets          # Images and other static files
 ├── 📂 css             # Stylesheets
 │   ├── styles.css     # Main CSS file
-├── 📂 js              # JavaScript (if needed later)
 ├── index.html        # Main HTML file
 ├── README.md         # Project documentation
 ```
@@ -41,9 +40,6 @@ To get started with the project, follow these steps:
 
 ## 💡 Contributions
 Feel free to fork the repo, suggest improvements, or modify the design to add your own creative touch!
-
-## 📜 License
-(optional content)
 
 
 Happy coding! 🚀
