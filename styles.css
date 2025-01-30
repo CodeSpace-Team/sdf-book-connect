@@ -460,7 +460,11 @@
       margin: 10px auto;
   }
 
-  .image, .image2 {
+  .image{
+    display: none;
+  }
+
+  .image2 {
       width: 100%;
       height: 50vh;
   }
